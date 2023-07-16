@@ -5,27 +5,23 @@ import lombok.Data;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "role")
 @Data
-public class User {
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
-    @Column(unique = true)
-    private String username;
-    private String nameSurname;
-    @Column(unique = true)
-    private String email;
-    private String password;
+    private Long roleId;
+    private String roleName;
+    private String roleDetail;
+    private Integer roleLevel;
+    @OneToMany(mappedBy="role")
+    private Set<User> users;
     @Column(columnDefinition = "datetime default CURRENT_TIMESTAMP")
     private Date createdTimezone;
     private Date deletedTimezone;
     @Column(columnDefinition = "boolean default false")
     private boolean isDeleted;
-    @ManyToOne
-    @JoinColumn(name="role_id")
-    private Collection<Role> role;
-
 }
