@@ -1,15 +1,13 @@
 package me.ramazanbulbul.blog.services;
 
 import me.ramazanbulbul.blog.entities.Role;
-import me.ramazanbulbul.blog.entities.User;
 import me.ramazanbulbul.blog.repos.RoleRepository;
-import me.ramazanbulbul.blog.repos.UserRepository;
-import me.ramazanbulbul.blog.utils.Hash;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
-
+@Service
 public class RoleService extends BaseService{
     @Autowired
     public RoleService(RoleRepository roleRepository){
@@ -23,9 +21,9 @@ public class RoleService extends BaseService{
         return roleRepository.save(role);
     }
     public Role remove(Long roleId){
-        Role role = roleRepository.getById(roleId);
+        Role role = roleRepository.findById(roleId).orElseThrow();
         role.setDeleted(true);
-        role.setDeletedTimezone(new Date());
+        role.setDeletedTimestamp(new Date());
         return roleRepository.save(role);
     }
 }

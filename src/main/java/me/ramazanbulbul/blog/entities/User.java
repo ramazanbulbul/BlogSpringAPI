@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -19,13 +20,22 @@ public class User {
     @Column(unique = true)
     private String email;
     private String password;
+
     @Column(columnDefinition = "datetime default CURRENT_TIMESTAMP")
-    private Date createdTimezone;
-    private Date deletedTimezone;
+    private Date createdTimestamp;
+    private Long createdUserId;
+
+    private Date updatedTimestamp;
+    private Long updatedUserId;
+
+    private Date deletedTimestamp;
+    private Long deletedUserId;
     @Column(columnDefinition = "boolean default false")
     private boolean isDeleted;
+
+
+
     @ManyToOne
     @JoinColumn(name="role_id")
-    private Collection<Role> role;
-
+    private Role role;
 }

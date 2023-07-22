@@ -19,9 +19,22 @@ public class Role {
     private Integer roleLevel;
     @OneToMany(mappedBy="role")
     private Set<User> users;
+
+    @ManyToOne
+    @JoinColumn(name="created_user_id")
+    private User createdUser;
     @Column(columnDefinition = "datetime default CURRENT_TIMESTAMP")
-    private Date createdTimezone;
-    private Date deletedTimezone;
+    private Date createdTimestamp;
+
+    @ManyToOne
+    @JoinColumn(name="updated_user_id")
+    private User updatedUser;
+    private Date updatedTimestamp;
+
+    @ManyToOne
+    @JoinColumn(name="deleted_user_id")
+    private User deletedUser;
+    private Date deletedTimestamp;
     @Column(columnDefinition = "boolean default false")
     private boolean isDeleted;
 }
