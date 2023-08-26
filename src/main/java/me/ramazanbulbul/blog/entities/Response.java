@@ -12,6 +12,7 @@ public class Response {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long responseId;
+    @Column(columnDefinition="text")
     String responseJson;
     @Column(columnDefinition = "datetime default CURRENT_TIMESTAMP")
     Date responseDate;

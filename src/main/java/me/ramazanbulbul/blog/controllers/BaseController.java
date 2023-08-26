@@ -1,5 +1,6 @@
 package me.ramazanbulbul.blog.controllers;
 
+import me.ramazanbulbul.blog.services.PostService;
 import me.ramazanbulbul.blog.services.ResponseService;
 import me.ramazanbulbul.blog.services.RoleService;
 import me.ramazanbulbul.blog.services.UserService;
@@ -9,6 +10,8 @@ public class BaseController {
     public UserService userService;
     @Autowired
     public ResponseService responseService;
+    @Autowired
+    public PostService postService;
     public BaseController(){
 
     }

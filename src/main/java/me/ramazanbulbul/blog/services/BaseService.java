@@ -1,6 +1,7 @@
 package me.ramazanbulbul.blog.services;
 
 import me.ramazanbulbul.blog.BlogApplication;
+import me.ramazanbulbul.blog.repos.PostRepository;
 import me.ramazanbulbul.blog.repos.ResponseRepository;
 import me.ramazanbulbul.blog.repos.RoleRepository;
 import me.ramazanbulbul.blog.repos.UserRepository;
@@ -15,6 +16,8 @@ public class BaseService {
     RoleRepository roleRepository;
     @Autowired
     ResponseRepository responseRepository;
+    @Autowired
+    PostRepository postRepository;
     public BaseService(){
 
     }

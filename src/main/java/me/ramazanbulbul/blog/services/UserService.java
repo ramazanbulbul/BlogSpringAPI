@@ -173,7 +173,7 @@ public class UserService extends BaseService{
     public ResponseObject<User, UserDeleteRequest> delete(UserDeleteRequest request){
         ResponseObject<User, UserDeleteRequest> responseObject = new ResponseObject<User, UserDeleteRequest>(request);
         try {
-            User user = request.getUser();
+            User user = getById(new UserGetByIdRequest(request.getUser().getUserId())).getResponse();
             User deletedUser = request.getDeletedUser();
 
             if (this.getById(new UserGetByIdRequest(user.getUserId())).getResponse() == null){

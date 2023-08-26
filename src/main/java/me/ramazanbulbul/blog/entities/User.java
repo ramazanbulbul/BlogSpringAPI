@@ -38,4 +38,12 @@ public class User {
     @ManyToOne
     @JoinColumn(name="role_id")
     private Role role;
+
+    @OneToMany(mappedBy="createdUser")
+    private Set<Post> createdPosts;
+    @OneToMany(mappedBy="updatedUser")
+    private Set<Post> updatedPosts;
+    @OneToMany(mappedBy="deletedUser")
+    private Set<Post> deletedPosts;
+
 }
